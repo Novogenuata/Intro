@@ -48,6 +48,7 @@ import com.example.tiptime.ui.theme.TipTimeTheme
 import java.text.NumberFormat
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 
 class MainActivity : ComponentActivity() {
@@ -112,6 +113,7 @@ fun TipTimeLayout() {
 @Composable
 fun EditNumberField(
     @StringRes label: Int,
+
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -122,8 +124,11 @@ fun EditNumberField(
         onValueChange = onValueChange,
         singleLine = true,
         label = { Text(stringResource(label)) },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        keyboardOptions = KeyboardOptions.Default.copy( keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Next),
         modifier = modifier
+
+
     )
 }
 
